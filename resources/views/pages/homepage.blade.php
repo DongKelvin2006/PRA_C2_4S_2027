@@ -7,6 +7,7 @@
     </x-slot:introduction_text>
 
     <h1>
+        <h1>{{ $name }}</h1>
         <x-slot:title>
             {{ __('misc.all_brands') }}
         </x-slot:title>
