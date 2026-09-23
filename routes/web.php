@@ -40,7 +40,9 @@ Route::get('/', function () {
     return view('pages.homepage', compact('brands'), ['name' => 'Kelvin']);
 })->name('home');
 
-
+//route to register clicks
+Route::get('/manual/{manual_id}/visit', [ManualController::class, 'visit'])
+    ->name('manual.visit');
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
