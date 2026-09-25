@@ -35,10 +35,8 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
 
 // Homepage
-Route::get('/', function () {
-    $brands = Brand::all()->sortBy('name');
-    return view('pages.homepage', compact('brands'), ['name' => 'Kelvin']);
-})->name('home');
+Route::get('/', [ManualController::class, 'homepage'])
+    ->name('home');
 
 //route to register clicks
 Route::get('/manual/{manual_id}/visit', [ManualController::class, 'visit'])

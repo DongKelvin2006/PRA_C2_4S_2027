@@ -13,6 +13,12 @@
         </x-slot:title>
     </h1>
 
+    <h1>Top 10 manuals</h1>
+    @foreach ($manuals as $manual)
+        <div>
+            {{ $manual->name }} - {{ $manual->visited }} visits
+        </div>
+    @endforeach
 
     <?php
     $size = count($brands);
