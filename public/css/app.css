@@ -183,10 +183,12 @@ sup {
 }
 
 a {
-    color: #3490dc;
+    color: blue;
     text-decoration: none;
     background-color: transparent;
 }
+
+
 a:hover {
     color: #1d68a7;
     text-decoration: underline;
@@ -1194,6 +1196,11 @@ pre code {
     .col-md-4 {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
+        background-color: #e9ecef;
+    }
+
+    .col-md-4 a{
+        color: #000;
     }
 
     .col-md-5 {
@@ -5208,6 +5215,12 @@ a.badge-dark.focus {
     background-color: #e9ecef;
     border-radius: 0.3rem;
 }
+
+.jumbotron h1{
+    font-weight: bold;
+    font-size: xx-large;
+}
+
 @media (min-width: 576px) {
     .jumbotron {
         padding: 4rem 2rem;

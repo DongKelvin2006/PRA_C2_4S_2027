@@ -7,11 +7,18 @@
     </x-slot:introduction_text>
 
     <h1>
+        <h1>{{ $name }}</h1>
         <x-slot:title>
             {{ __('misc.all_brands') }}
         </x-slot:title>
     </h1>
 
+    <h1>Top 10 manuals</h1>
+    @foreach ($manuals as $manual)
+        <div>
+            {{ $manual->name }} - {{ $manual->visited }} visits
+        </div>
+    @endforeach
 
     <?php
     $size = count($brands);
