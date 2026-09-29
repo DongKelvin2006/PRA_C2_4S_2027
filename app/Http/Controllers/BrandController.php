@@ -8,16 +8,21 @@ use App\Models\Manual;
 
 class BrandController extends Controller
 {
-    public function show($brand_id, $brand_slug)
-    {
+public function show($brand_id, $brand_slug)
+{
+    $brand = Brand::findOrFail($brand_id);
 
-        $brand = Brand::findOrFail($brand_id);
-        $manuals = Manual::all()->where('brand_id', $brand_id);
+    $manuals = Manual::where('brand_id', $brand_id)->get();
 
-        return view('pages/manual_list', [
-            "brand" => $brand,
-            "manuals" => $manuals
-        ]);
+    $top5Manuals = Manual::where('brand_id', $brand_id)
+        ->orderByDesc('visited')
+        ->take(5)
+        ->get();
 
-    }
+    return view('pages/manual_list', [
+        'brand' => $brand,
+        'manuals' => $manuals,
+        'top5Manuals' => $top5Manuals
+    ]);
+}
 }

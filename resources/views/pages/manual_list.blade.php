@@ -20,9 +20,15 @@
 
 
     <h1>{{ $brand->name }}</h1>
-
     <p>{{ __('introduction_texts.type_list', ['brand'=>$brand->name]) }}</p>
 
+    <p>Top 5 manuals van {{ $brand->name }}</p>
+
+    @foreach($top5Manuals as $manual)
+        <div>
+            {{ $manual->name }} - {{ $manual->visited }}
+        </div>
+    @endforeach
 
         @foreach ($manuals as $manual)
 
