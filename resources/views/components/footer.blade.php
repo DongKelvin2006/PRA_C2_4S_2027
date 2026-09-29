@@ -2,7 +2,16 @@
 <footer>
   <div class="container">
     © {{ __('misc.copyright') }}
-
+<style>
+    .links a{
+        color: white;
+        text-decoration: none;
+    }
+    .contact a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
     <div class="info">
         <div class="over-ons">
             <p>
@@ -19,24 +28,26 @@
       <p>HandleidingWijzer<br>Voorbeeldstraat 12<br>1012 AB Amsterdam, Nederland</p>
       <p><a href="mailto:info@example.com">info@example.com</a><br>
         <a href="tel:+31205550123">+31 20 555 01 23</a></p>
+        <a href="/contact">Contacts</a></li><br>
+        <p></p>
     </div>
 
     <div class="socials">
         <p>
             Socials
         </p>
-      <ul>
-        <li><a href="https://www.facebook.com/HandleidingWijzer" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        <li><a href="https://twitter.com/HandleidingWijzer" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-        <li><a href="https://www.instagram.com/handleidingwijzer/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      </ul>
-    </div>
+        <div class="links">
+            <ul>
+                <li><a href="https://www.facebook.com/HandleidingWijzer" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                <li><a href="https://twitter.com/HandleidingWijzer" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                <li><a href="https://www.instagram.com/handleidingwijzer/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+        </div>
 
     </div>
 
   </div>
 </footer>
-
 
 <!-- analytics code -->
 <script type="text/javascript">

@@ -33,10 +33,13 @@ use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\PageController;
+use App\Models\Manual;
 
 // Homepage
 Route::get('/', [ManualController::class, 'homepage'])
     ->name('home');
+
 
 //route to register clicks
 Route::get('/manual/{manual_id}/visit', [ManualController::class, 'visit'])
@@ -61,3 +64,5 @@ Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
 
 // Names
 
+// Kelvin: Contact Pagina
+Route::get('/contact', [PageController::class, 'redirect']);

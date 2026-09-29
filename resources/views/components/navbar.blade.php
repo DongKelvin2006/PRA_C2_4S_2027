@@ -3,6 +3,9 @@
         <div class="navbar-header mr-auto">
             <a class="navbar-brand" href="/" title="{{ __('misc.home_alt') }}">{{ __('misc.homepage_title') }}</a>
         </div>
+        <div class="navbar-header mr-auto">
+            <a class="navbar-brand" href="/contact" title="Contact">Contact</a>
+        </div>
         <div id="navbar" class="form-inline">
 
             <script>

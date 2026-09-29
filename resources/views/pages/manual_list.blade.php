@@ -1,5 +1,15 @@
 <x-layouts.app>
-
+<style>
+    .button-1, .button-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 115px;
+    background: #e9ecef;
+    border-radius: 5px;
+    color: blue;
+}
+</style>
     <x-slot:head>
         <meta name="robots" content="index, nofollow">
     </x-slot:head>
