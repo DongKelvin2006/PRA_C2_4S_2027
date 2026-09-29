@@ -737,6 +737,16 @@ pre code {
     padding-top: 20px;
 }
 
+.button-1, .button-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 115px;
+    background: #e9ecef;
+    border-radius: 5px;
+    color: blue;
+}
+
 .col {
     flex-basis: 0;
     flex-grow: 1;
