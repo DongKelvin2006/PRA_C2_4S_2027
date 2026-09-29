@@ -718,6 +718,12 @@ pre code {
     padding-left: 15px;
 }
 
+.row {
+    display:flex;
+    justify-content: center;
+
+}
+
 .col {
     flex-basis: 0;
     flex-grow: 1;
