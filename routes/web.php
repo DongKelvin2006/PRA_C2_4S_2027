@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,12 +33,14 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\TestController;
 use App\Models\Manual;
 
 // Homepage
 Route::get('/', [ManualController::class, 'homepage'])
     ->name('home');
 
+Route::get('/update', [TestController::class, 'update']);
 
 //route to register clicks
 Route::get('/manual/{manual_id}/visit', [ManualController::class, 'visit'])
