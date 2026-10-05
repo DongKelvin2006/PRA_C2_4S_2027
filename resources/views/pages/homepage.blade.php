@@ -1,69 +1,94 @@
 <x-layouts.app>
-<style>
-    .row{
 
+<style>
+    .brand-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px 25px;
+        padding-left: 20px;
+    }
+
+    .brand-list li {
+        width: 150px;
+    }
+
+    .brand-letter {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .container2{
+        background: #e9ecef;
+        padding: 10px;
+    }
+    .container2 a{
+        color: black;
     }
 </style>
-    <x-slot:introduction_text>
-        <p><img src="img/afbl_logo.png" align="right" width="100" height="100">{{ __('introduction_texts.homepage_line_1') }}</p>
-        <p>{{ __('introduction_texts.homepage_line_2') }}</p>
-        <p>{{ __('introduction_texts.homepage_line_3') }}</p>
-    </x-slot:introduction_text>
 
-    <h1>
-        <h1>{{ $name }}</h1>
-        <x-slot:title>
-            {{ __('misc.all_brands') }}
-        </x-slot:title>
-    </h1>
+<x-slot:introduction_text>
+    <p>
+        <img src="img/afbl_logo.png" align="right" width="100" height="100">
+        {{ __('introduction_texts.homepage_line_1') }}
+    </p>
 
-    <h1>Top 10 manuals</h1>
-    @foreach ($manuals as $manual)
-        <div>
-            {{ $manual->name }} - {{ $manual->visited }} visits
-        </div>
+    <p>{{ __('introduction_texts.homepage_line_2') }}</p>
+    <p>{{ __('introduction_texts.homepage_line_3') }}</p>
+</x-slot:introduction_text>
+
+<h1>{{ $name }}</h1>
+
+<x-slot:title>
+    {{ __('misc.all_brands') }}
+</x-slot:title>
+
+<h1>Top 10 manuals</h1>
+
+@foreach ($manuals as $manual)
+    <div>
+        {{ $manual->name }} - {{ $manual->visited }} visits
+    </div>
+@endforeach
+
+<div class="container2">
+
+    @php
+        $currentLetter = null;
+    @endphp
+
+    @foreach ($brands as $brand)
+
+        @php
+            $letter = strtoupper(substr($brand->name, 0, 1));
+        @endphp
+
+        @if ($letter !== $currentLetter)
+
+            @if ($currentLetter !== null)
+                </ul>
+            @endif
+
+            <h2 class="brand-letter">{{ $letter }}</h2>
+
+            <ul class="brand-list">
+
+            @php
+                $currentLetter = $letter;
+            @endphp
+
+        @endif
+
+            <li>
+                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">
+                    {{ $brand->name }}
+                </a>
+            </li>
+
     @endforeach
 
-    <?php
-    $size = count($brands);
-    $columns = 3;
-    $chunk_size = ceil($size / $columns);
-    ?>
+    @if ($currentLetter !== null)
+        </ul>
+    @endif
 
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
+</div>
 
-            @foreach($brands->chunk($chunk_size) as $chunk)
-                <div class="col-md-4">
-
-                    <ul>
-                        @foreach($chunk as $brand)
-
-                            <?php
-                            $current_first_letter = strtoupper(substr($brand->name, 0, 1));
-
-                            if (!isset($header_first_letter) || (isset($header_first_letter) && $current_first_letter != $header_first_letter)) {
-                                echo '</ul>
-						<h2>' . $current_first_letter . '</h2>
-						<ul>';
-                            }
-                            $header_first_letter = $current_first_letter
-                            ?>
-
-                            <li>
-                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">{{ $brand->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                </div>
-                <?php
-                unset($header_first_letter);
-                ?>
-            @endforeach
-
-        </div>
-
-    </div>
 </x-layouts.app>

@@ -24,11 +24,6 @@ return new class extends Migration
             $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
-    public function update(): void{
-        Schema::table('name', function (Blueprint $table) {
-        $table->string('name');
-        });
-    }
 
     /**
      * Reverse the migrations.
