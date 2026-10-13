@@ -5,6 +5,7 @@
         </div>
         <div class="navbar-header mr-auto">
             <a class="navbar-brand" href="/contact" title="Contact">Contact</a>
+            <a class="navbar-brand" href="/page" title="Contact">Admin</a>
         </div>
         <div id="navbar" class="form-inline">
 

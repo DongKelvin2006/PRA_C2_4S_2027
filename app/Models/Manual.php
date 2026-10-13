@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Manual extends Model
 {
     use HasFactory;
-
     // Returns the filesize in a human readable format
     public function getFilesizeHumanReadableAttribute(){
 

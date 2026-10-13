@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AdminPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +41,8 @@ use App\Models\Manual;
 // Homepage
 Route::get('/', [ManualController::class, 'homepage'])
     ->name('home');
+
+Route::resource('/page', AdminPageController::class);
 
 Route::get('/update', [TestController::class, 'update']);
 
