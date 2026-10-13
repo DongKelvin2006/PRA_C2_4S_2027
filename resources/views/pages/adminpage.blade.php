@@ -17,10 +17,7 @@
                             <form action="{{ route('page.destroy', $manual->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    Delete
-                                </button>
+                                <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
                             </form>
                         </td>
                     </tr>
