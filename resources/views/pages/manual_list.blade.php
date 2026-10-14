@@ -8,6 +8,7 @@
     background: #e9ecef;
     border-radius: 5px;
     color: blue;
+    text-align: center;
 }
 </style>
     <x-slot:head>
@@ -27,13 +28,12 @@
         @foreach ($manuals as $manual)
 
             @if ($manual->locally_available)
-                <a class="button-1" href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+                <a class="button-1" href="{{ route('manual.detail', ['brand_id' => $brand->id, 'brand_slug' => $brand->getNameUrlEncodedAttribute(), 'manual_id' => $manual->id]) }}" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
                 ({{$manual->filesize_human_readable}})
             @else
-                <a class="button-2" href="{{ route('manual.visit', ['manual_id' => $manual->id]) }}" target="_blank" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+                <a class="button-2" href="{{ route('manual.detail', ['brand_id' => $brand->id, 'brand_slug' => $brand->getNameUrlEncodedAttribute(), 'manual_id' => $manual->id]) }}" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
             @endif
 
-            <br />
         @endforeach
 
 </x-layouts.app>
