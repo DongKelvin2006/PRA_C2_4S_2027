@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Manual;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ManualController extends Controller
 {
@@ -19,6 +20,46 @@ class ManualController extends Controller
         ]);
     }
 
+    public function shortLink($code)
+    {
+        $manual = Manual::where('short_link_code', $code)->firstOrFail();
+        $brand = Brand::findOrFail($manual->brand_id);
+
+        return redirect()->route('manual.detail', [
+            'brand_id' => $brand->id,
+            'brand_slug' => $brand->getNameUrlEncodedAttribute(),
+            'manual_id' => $manual->id,
+        ]);
+    }
+
+    public function createShortLink($manual_id)
+    {
+        $manual = DB::transaction(function () use ($manual_id) {
+            $manual = Manual::whereKey($manual_id)
+                ->lockForUpdate()
+                ->firstOrFail();
+
+            if (empty($manual->short_link_code)) {
+                do {
+                    $code = strtolower(Str::random(4));
+                } while (Manual::where('short_link_code', $code)->exists());
+
+                $manual->short_link_code = $code;
+                $manual->save();
+            }
+
+            return $manual;
+        });
+
+        $brand = Brand::findOrFail($manual->brand_id);
+
+        return redirect()->route('manual.detail', [
+            'brand_id' => $brand->id,
+            'brand_slug' => $brand->getNameUrlEncodedAttribute(),
+            'manual_id' => $manual->id,
+        ]);
+    }
+
     public function visit($manual_id)
     {
         $manual = Manual::findOrFail($manual_id);
@@ -30,9 +71,9 @@ class ManualController extends Controller
 
     public function SelectTop10()
     {
-    return Manual::orderByDesc('visited')
-        ->take(10)
-        ->get();
+        return Manual::orderByDesc('visited')
+            ->take(10)
+            ->get();
     }
 
     public function homepage()
